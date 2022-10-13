@@ -17,7 +17,7 @@ import java.util.Date;
 import static java.lang.Math.pow;
 
 public class AreaCheckServlet extends HttpServlet {
-    private static final String HITS_DATA_ATTRIBUTE = "hitsData";
+    public static final String HITS_DATA_ATTRIBUTE = "hitsData";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

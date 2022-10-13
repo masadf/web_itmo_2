@@ -45,15 +45,33 @@ $(window).on("load", (e) => {
     renderForm();
 });
 
-$("#remove_button").on("click", (e) => {
+$("#clear_table").on("click", (e) => {
+    e.preventDefault();
     $.ajax({
-        url: "php/cleaner.php",
+        url: "http://localhost:8081",
+        data: "clear=true",
         method: "GET",
-        dataType: "json",
         success: () => {
-            // todo
+            window.location.replace("/");
         }
     });
+})
+
+$("#clear_picture").on("click", (e) => {
+    e.preventDefault();
+    $.ajax({
+        url: "http://localhost:8081",
+        data: "clear=true",
+        method: "GET",
+        success: () => {
+            window.location.replace("/");
+        }
+    });
+})
+
+$("#go_back").on("click", (e) => {
+    e.preventDefault();
+    window.location.replace("/");
 })
 
 $(".area-wrapper").on("click", (e) => {

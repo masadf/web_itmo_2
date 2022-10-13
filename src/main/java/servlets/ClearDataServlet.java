@@ -1,14 +1,14 @@
 package servlets;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import static servlets.AreaCheckServlet.HITS_DATA_ATTRIBUTE;
 
 public class ClearDataServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp){
+        req.getSession().removeAttribute(HITS_DATA_ATTRIBUTE);
     }
 }
