@@ -72,6 +72,6 @@ class ControllerServletTest {
         servlet.doGet(request, response);
 
         verify(servlet.getServletConfig()).getServletContext();
-        verify(servlet.getServletContext()).getRequestDispatcher("/views/form.jsp");
+        verify(servlet.getServletContext()).getRequestDispatcher("/form.jsp");
     }
 }

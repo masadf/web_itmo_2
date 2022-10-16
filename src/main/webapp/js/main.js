@@ -6,7 +6,7 @@ $("#values-form").submit((e) => {
     if (!validate()) return;
 
     $.ajax({
-        url: "http://localhost:8081/",
+        url: "/",
         method: "GET",
         data: `${$("#values-form").serialize()}&timezone=${new Date().getTimezoneOffset()}`,
         beforeSend: () => {
@@ -38,7 +38,7 @@ $(window).on("load", (e) => {
 $("#clear_table").on("click", (e) => {
     e.preventDefault();
     $.ajax({
-        url: "http://localhost:8081",
+        url: "/",
         data: "clear=true",
         method: "GET",
         success: () => {
@@ -50,7 +50,7 @@ $("#clear_table").on("click", (e) => {
 $("#clear_picture").on("click", (e) => {
     e.preventDefault();
     $.ajax({
-        url: "http://localhost:8081",
+        url: "/",
         data: "clear=true",
         method: "GET",
         success: () => {
@@ -79,7 +79,7 @@ $(".area-wrapper").on("click", (e) => {
     let yVal = rVal * (k - e.offsetY) * 1.25 / k;
 
     $.ajax({
-        url: "http://localhost:8081/",
+        url: "/",
         method: "GET",
         data: `xVal=${xVal}&yVal=${yVal}&rVal=${rVal}&timezone=${new Date().getTimezoneOffset()}`,
         beforeSend: () => {

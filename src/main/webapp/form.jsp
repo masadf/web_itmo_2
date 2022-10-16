@@ -6,8 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Web 2</title>
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <div class="wrapper">
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="block-header">График</div>
             <div class="area-wrapper">
-                <img src="../img/area.png" alt="area">
+                <img src="img/area.png" alt="area">
                 <c:forEach var="hit" items="${hitsData}">
                     <div class="dot"
                          style="top: ${175 - hit.getYVal()*175/(1.25*hit.getRVal())-4}px;
@@ -122,6 +122,6 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="module" src="../js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

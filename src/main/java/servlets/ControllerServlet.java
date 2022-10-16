@@ -14,7 +14,7 @@ public class ControllerServlet extends HttpServlet {
         } else if (isPointRequest(req)) {
             getServletContext().getNamedDispatcher("AreaCheckServlet").forward(req, resp);
         } else {
-            getServletContext().getRequestDispatcher("/views/form.jsp").forward(req, resp);
+            getServletContext().getRequestDispatcher("/form.jsp").forward(req, resp);
         }
     }
 
