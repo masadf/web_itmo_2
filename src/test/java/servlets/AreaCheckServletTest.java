@@ -1,6 +1,6 @@
 package servlets;
 
-import models.Hit;
+import model.Hit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

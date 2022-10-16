@@ -14,7 +14,7 @@
     <div class="header sector">
         <div class="container">
             <div class="name">Марьин Савва(P32111)</div>
-            <div class="option">1216</div>
+            <div class="option">1166</div>
         </div>
     </div>
     <div class="graph-block sector">
@@ -38,54 +38,20 @@
                     <div class="values-row">
                         <div class="value-header">X</div>
                         <div class="value-choose-block">
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" id="xval1" value="-2">
-                                </label>
-                                <div class="value-text">-2</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" id="xval2" value="-1.5">
-                                </label>
-                                <div class="value-text">-1.5</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" id="xval3" value="-1">
-                                </label>
-                                <div class="value-text">-1</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" value="-0.5">
-                                </label>
-                                <div class="value-text">-0.5</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" value="0.5">
-                                </label>
-                                <div class="value-text">0.5</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" value="1">
-                                </label>
-                                <div class="value-text">1</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" value="1.5">
-                                </label>
-                                <div class="value-text">1.5</div>
-                            </div>
-                            <div class="value">
-                                <label>
-                                    <input type="checkbox" name="xVal" value="2">
-                                </label>
-                                <div class="value-text">2</div>
-                            </div>
+                            <select name="xVal">
+                                <option disabled>Выберите значение X</option>
+                                <option value="-5">-5</option>
+                                <option value="-4">-4</option>
+                                <option value="-3">-3</option>
+                                <option value="-2">-2</option>
+                                <option value="-1">-1</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
                         </div>
                     </div>
                     <div class="values-row">
@@ -148,7 +114,7 @@
             <div class="table"></div>
         </div>
     </div>
-    <div class="buttons-block sector">
+    <div class="buttons-block">
         <div class="buttons">
             <button type="submit" id="go_back">Вернуться назад</button>
             <button type="button" id="clear_table">Очистить таблицу</button>

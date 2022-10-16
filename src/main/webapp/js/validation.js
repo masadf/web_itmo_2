@@ -6,7 +6,7 @@ export function validate() {
 }
 
 function validateX() {
-    if ($("input[name=xVal]").is(":checked")) {
+    if ($("select[name=xVal]").length) {
         return true;
     }
     showError("Ошибка валидации X!");

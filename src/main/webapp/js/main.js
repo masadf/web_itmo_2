@@ -17,7 +17,7 @@ $("#values-form").submit((e) => {
             renderTable(data);
 
             let graph = $(".area-wrapper");
-            let xVal = $("input[name=xVal]:checked").val();
+            let xVal = $("select[name=xVal]").val();
             let yVal = $("input[name=yVal]").val();
             let rVal = $("input[name=rVal]:checked").val();
             let k = graph.width() / 2;
@@ -30,16 +30,6 @@ $("#values-form").submit((e) => {
 function setButtonDisabled(isDisabled) {
     $("button[type=submit]").attr("disabled", isDisabled);
 }
-
-$("input[name=xval]").on("change", (e) => {
-    let value = e.currentTarget.defaultValue;
-
-    $("input[name=xval]").map((index, item) => {
-        if (item.defaultValue !== value) {
-            item.checked = false;
-        }
-    })
-})
 
 $(window).on("load", (e) => {
     renderForm();

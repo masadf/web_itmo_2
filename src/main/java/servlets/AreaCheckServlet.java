@@ -1,8 +1,9 @@
 package servlets;
 
 import exceptions.InvalidParameterException;
-import models.Hit;
-import models.Point;
+import model.Hit;
+import model.Point;
+import model.PointHandler;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,30 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-
-import static java.lang.Math.pow;
 
 public class AreaCheckServlet extends HttpServlet {
     public static final String HITS_DATA_ATTRIBUTE = "hitsData";
+    private final PointHandler pointHandler = new PointHandler();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Date startExecution = new Date();
         try {
-            Point point = buildPoint(req);
-            validatePoint(point);
-            Hit currentHit = Hit.builder()
-                    .xVal(point.getXVal())
-                    .yVal(point.getYVal())
-                    .rVal(point.getRVal())
-                    .currentTime(ZonedDateTime.now().minusMinutes(point.getTimezone()).toLocalDateTime())
-                    .executionTime(new Date().getTime() - startExecution.getTime())
-                    .isHit(isHit(point))
-                    .build();
-
+            Hit currentHit = pointHandler.getHitInfo(buildPoint(req));
             HttpSession session = req.getSession();
             saveHitInSession(session, currentHit);
             fillResponse(resp, session);
@@ -58,38 +45,6 @@ public class AreaCheckServlet extends HttpServlet {
         }
 
         return new Point(xVal, yVal, rVal, timezone);
-    }
-
-    private void validatePoint(Point point) {
-        byte MAX_Y = 5;
-        byte MIN_Y = -5;
-
-        if (!(point.getYVal() > MIN_Y && point.getYVal() < MAX_Y)) {
-            throw new InvalidParameterException("Значение Y не попадает в нужный интервал!");
-        }
-
-        if (point.getRVal() <= 0) {
-            throw new InvalidParameterException("Значение R не может быть неположительным!");
-        }
-    }
-
-    private boolean isHit(Point point) {
-        return isRectangleHit(point) || isCircleHit(point) || isTriangleHit(point);
-    }
-
-    private boolean isRectangleHit(Point point) {
-        return point.getXVal() <= 0 && point.getXVal() >= -point.getRVal()
-                && point.getYVal() >= 0 && point.getYVal() <= point.getRVal() / 2;
-    }
-
-    private boolean isCircleHit(Point point) {
-        return point.getXVal() >= 0 && point.getYVal() >= 0
-                && (pow(point.getXVal(), 2) + pow(point.getYVal(), 2)) <= pow(point.getRVal() / 2, 2);
-    }
-
-    private boolean isTriangleHit(Point point) {
-        return point.getXVal() >= 0 && point.getYVal() <= 0
-                && (point.getXVal() - point.getRVal()) <= point.getYVal();
     }
 
     private void saveHitInSession(HttpSession session, Hit hit) {
